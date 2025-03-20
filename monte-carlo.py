@@ -2,14 +2,16 @@
 # Returns (successfully contacted, time to contact)
 def contact_customer():
     time = 0
-
+    
+    # Try to contact the customer 4 times, counting the time each call took
     for i in range(4):
         result = call()
         time += result[1]
 
         if result[0]:
             return (True, time)
-
+    
+    # If they didn't answer after four calls, give up
     return (False, time)
 
 
