@@ -26,7 +26,7 @@ def call():
         return (False, time)
     
     # Give up if not answered after 25 seconds
-    if time_to_answer >= 25:
+    if away_from_phone or time_to_answer >= 25:
         time += 25
         return (False, time)
    
