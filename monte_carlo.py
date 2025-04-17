@@ -57,7 +57,9 @@ def call():
 
 
 def main():
-    customers = [contact_customer() for i in range(1000)]
+    NUM_CALLS = 1000
+
+    customers = [contact_customer() for i in range(NUM_CALLS)]
     total_time = sum([customer[1] for customer in customers])
     customers_called = len([customer for customer in customers if customer[0]])
 
@@ -68,10 +70,10 @@ def main():
         f"Median time per customer: {median([customer[1] for customer in customers])}"
     )
 
-    w_le_15 = len([customer for customer in customers if customer[1] <= 15]) / 1000
-    w_le_20 = len([customer for customer in customers if customer[1] <= 20]) / 1000
-    w_le_30 = len([customer for customer in customers if customer[1] <= 30]) / 1000
-    w_g_40 = len([customer for customer in customers if customer[1] > 40]) / 1000
+    w_le_15 = len([customer for customer in customers if customer[1] <= 15]) / NUM_CALLS
+    w_le_20 = len([customer for customer in customers if customer[1] <= 20]) / NUM_CALLS
+    w_le_30 = len([customer for customer in customers if customer[1] <= 30]) / NUM_CALLS
+    w_g_40 = len([customer for customer in customers if customer[1] > 40]) / NUM_CALLS
 
     print(f"P[W <= 15]: {w_le_15}")
     print(f"P[W <= 20]: {w_le_20}")
