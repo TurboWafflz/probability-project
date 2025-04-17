@@ -53,3 +53,16 @@ def call():
     # Otherwise the call was successful
     time += time_to_answer
     return (True, time)
+
+
+def main():
+    customers = [contact_customer() for i in range(1000)]
+    total_time = sum([customer[1] for customer in customers])
+    customers_called = len([customer for customer in customers if customer[0]])
+
+    print(f"Customers reached: {customers_called}")
+    print(f"Time taken: {total_time} seconds")
+
+
+if __name__ == "__main__":
+    main()
