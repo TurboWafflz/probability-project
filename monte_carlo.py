@@ -1,5 +1,6 @@
 import random
 from math import log
+from statistics import median
 
 
 # Find the time to contact a customer
@@ -62,7 +63,10 @@ def main():
 
     print(f"Customers reached: {customers_called}")
     print(f"Time taken: {total_time} seconds")
-    print(f"Average time per customer: {total_time / customers_called} seconds")
+    print(f"Mean time per customer: {total_time / customers_called} seconds")
+    print(
+        f"Median time per customer: {median([customer[1] for customer in customers])}"
+    )
 
     w_le_15 = len([customer for customer in customers if customer[1] <= 15]) / 1000
     w_le_20 = len([customer for customer in customers if customer[1] <= 20]) / 1000
