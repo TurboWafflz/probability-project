@@ -22,7 +22,7 @@ def contact_customer():
 def expVar(mean):
     u_i = random.random()
 
-    return -log(1 - u_i) / mean
+    return -log(1 - u_i) / (1 / mean)
 
 
 # Find the time a call attempt took
