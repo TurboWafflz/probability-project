@@ -62,6 +62,17 @@ def main():
 
     print(f"Customers reached: {customers_called}")
     print(f"Time taken: {total_time} seconds")
+    print(f"Average time per customer: {total_time / customers_called} seconds")
+
+    w_le_15 = len([customer for customer in customers if customer[1] <= 15]) / 1000
+    w_le_20 = len([customer for customer in customers if customer[1] <= 20]) / 1000
+    w_le_30 = len([customer for customer in customers if customer[1] <= 30]) / 1000
+    w_g_40 = len([customer for customer in customers if customer[1] > 40]) / 1000
+
+    print(f"P[W <= 15]: {w_le_15}")
+    print(f"P[W <= 20]: {w_le_20}")
+    print(f"P[W <= 30]: {w_le_30}")
+    print(f"P[W > 40]: {w_g_40}")
 
 
 if __name__ == "__main__":
