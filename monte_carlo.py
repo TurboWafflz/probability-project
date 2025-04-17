@@ -1,8 +1,12 @@
+import random
+from math import log
+
+
 # Find the time to contact a customer
 # Returns (successfully contacted, time to contact)
 def contact_customer():
     time = 0
-    
+
     # Try to contact the customer 4 times, counting the time each call took
     for i in range(4):
         result = call()
@@ -10,9 +14,15 @@ def contact_customer():
 
         if result[0]:
             return (True, time)
-    
+
     # If they didn't answer after four calls, give up
     return (False, time)
+
+
+def expVar(mean):
+    u_i = random.random()
+
+    return -log(1 - u_i) / mean
 
 
 # Find the time a call attempt took
@@ -29,6 +39,7 @@ def call():
         return (False, time)
 
     # Give up if not answered after 25 seconds
+    time_to_answer = expVar(12)
     if away_from_phone or time_to_answer >= 25:
         time += 25
         return (False, time)
