@@ -1,5 +1,5 @@
 import random
-from math import log
+from math import floor, log
 from statistics import median
 
 
@@ -49,6 +49,8 @@ def call():
     time_to_answer = expVar(12)
     if away_from_phone or time_to_answer >= 25:
         time += 25
+        # Hang up time
+        time += 1
         return (False, time)
 
     # Otherwise the call was successful
@@ -70,6 +72,9 @@ def main():
         f"Median time per customer: {median([customer[1] for customer in customers])}"
     )
 
+    print(f"First quartile: {customers[floor(NUM_CALLS * 0.25)][1]}")
+    print(f"Third quartile: {customers[floor(NUM_CALLS * 0.75)][1]}")
+
     w_le_15 = len([customer for customer in customers if customer[1] <= 15]) / NUM_CALLS
     w_le_20 = len([customer for customer in customers if customer[1] <= 20]) / NUM_CALLS
     w_le_30 = len([customer for customer in customers if customer[1] <= 30]) / NUM_CALLS
@@ -79,6 +84,12 @@ def main():
     print(f"P[W <= 20]: {w_le_20}")
     print(f"P[W <= 30]: {w_le_30}")
     print(f"P[W > 40]: {w_g_40}")
+
+    W = [75, 100, 125]
+
+    for w in W:
+        P = len([customer for customer in customers if customer[1] > w]) / NUM_CALLS
+        print(f"P[W > {w}]: {P}")
 
 
 if __name__ == "__main__":
